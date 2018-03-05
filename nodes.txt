@@ -6,7 +6,6 @@ clovemines.fun - 50002
 ske.wtf - 50004
 mhamburger.net -50002
 garlium.kenzierocks.me - 50002
-electrum.garlicsoup.xyz - 50002
 electrum.grlc-bakery.fun - 50002
 garlium.grlc-bakery.fun - 50002
 electrum.garli.co.in - 50002
