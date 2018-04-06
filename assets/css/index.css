@@ -45,6 +45,19 @@ a.before:before{
   top:-0.25em;
 }
 
+.profile-image {
+  border-radius: 100%;
+  transition: all .5s ease;
+  width: 35vmin; }
+
+.page-title {
+  font-size: 10vmin;
+  transition: all .5s ease; }
+
+.page-description {
+  font-size: 10vmin;
+  transition: all .5s ease; }
+
 a.after:after{
   bottom:-0.25em;
 }
