@@ -4,6 +4,7 @@ import { OcMarkgithub2 } from "solid-icons/oc";
 import { createEffect, createMemo, createSignal, Show } from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
+import ALang from "~/components/ALang";
 
 const IMAGES = [
   {
@@ -20,14 +21,15 @@ const IMAGES = [
   },
 ];
 const imgs = IMAGES.slice();
-const englishes = ["🫖🔪", "🦅"]
+const englishes = ["🫖🔪", "🦅"];
 
 export default function Home() {
   const [img, setImg] = createSignal(IMAGES[0]);
   const [gay, setGay] = createSignal(false);
-  const eng = createMemo(() => englishes[Math.floor(Math.random() * englishes.length)]);
+  const eng = createMemo(
+    () => englishes[Math.floor(Math.random() * englishes.length)],
+  );
   const t = getL10n();
-
 
   createEffect(() => {
     const html = document.querySelector("html");
@@ -40,7 +42,7 @@ export default function Home() {
       lang={useLang()}
     >
       <Title>{t("home")}</Title>
-      <Meta name="description" content={t("description")}/>
+      <Meta name="description" content={t("description")} />
       <button
         onClick={() => {
           const img = imgs.shift();
@@ -85,15 +87,13 @@ export default function Home() {
         </div>
         <p class="mt-5">{t("languages")}</p>
         <div class="flex justify-center items-center content-around gap-6 text-xl">
-          <A href="/es/" title="Español">
+          <ALang lang="es" title="Español">
             🧉
-          </A>
-          <A href="/ja/" title="日本語">
+          </ALang>
+          <ALang lang="ja" title="日本語" bw="☀︎🌲">
             ☀️🌲
-          </A>
-          <A href="/" title="English">
-            {eng()}
-          </A>
+          </ALang>
+          <ALang title="English">{eng()}</ALang>
         </div>
       </div>
     </main>

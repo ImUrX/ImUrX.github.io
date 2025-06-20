@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Emoji:wght@300..700&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 /* @custom-variant hover (&:hover); */
@@ -41,11 +41,15 @@
   );
 }
 
+@utility emoji-bw {
+  font-family: "Noto Emoji";
+}
+
 body {
   background: rgb(var(--background-rgb));
   color: rgb(var(--foreground-rgb));
 
-  font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+  font-family: "Noto Sans", "Noto Sans JP", "Noto Color Emoji", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
