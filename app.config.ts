@@ -7,7 +7,7 @@ export default defineConfig({
   },
   ssr: true,
   server: {
-    static: true,
+    // static: true,
     prerender: {
       routes: ["/404.html", "/ja/404.html", "/es/404.html", "/"],
       crawlLinks: true,
