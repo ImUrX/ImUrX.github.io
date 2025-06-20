@@ -1,7 +1,7 @@
-import { Meta, Title } from "@solidjs/meta";
+import { Link, Meta, Title } from "@solidjs/meta";
 import { A } from "@solidjs/router";
 import { OcMarkgithub2 } from "solid-icons/oc";
-import { createEffect, createMemo, createSignal, Show } from "solid-js";
+import { createEffect, createMemo, createSignal, For, Show } from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 import ALang from "~/components/ALang";
@@ -43,6 +43,7 @@ export default function Home() {
     >
       <Title>{t("home")}</Title>
       <Meta name="description" content={t("description")} />
+      <For each={IMAGES}>{({ url }) => <Link rel="preload" href={url} />}</For>
       <button
         onClick={() => {
           const img = imgs.shift();
