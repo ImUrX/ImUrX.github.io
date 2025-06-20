@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+/* @custom-variant hover (&:hover); */
+
+:root {
+  --background-rgb: 214, 212, 255;
+  --foreground-rgb: 0, 0, 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-rgb: 0, 0, 0;
+    --foreground-rgb: 255, 255, 255;
+  }
+}
+
+@theme {
+  --breakpoint-xs: 30rem;
+  --color-background-10: rgb(var(--background-rgb));
+  --color-foreground-10: rgb(var(--foreground-rgb));
+  --animate-scroll: background-scroll 4s linear infinite reverse;
+
+  @keyframes background-scroll {
+    0% {
+      background-position: calc(var(--text-size) / sin(135deg)) 0%; /* size / sin(135deg) */
+    }
+  }
+}
+
+@utility bg-random {
+  --text-size: 128px;
+  background-image: repeating-linear-gradient(
+    135deg,
+    #ff0000 0 calc(var(--text-size) / 6 * 1),
+    #ffa500 calc(var(--text-size) / 6 * 1) calc(var(--text-size) / 6 * 2),
+    #ffff00 calc(var(--text-size) / 6 * 2) calc(var(--text-size) / 6 * 3),
+    #008000 calc(var(--text-size) / 6 * 3) calc(var(--text-size) / 6 * 4),
+    #0000ff calc(var(--text-size) / 6 * 4) calc(var(--text-size) / 6 * 5),
+    #800080 calc(var(--text-size) / 6 * 5) calc(var(--text-size) / 6 * 6)
+  );
+}
+
+body {
+  background: rgb(var(--background-rgb));
+  color: rgb(var(--foreground-rgb));
+
+  font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.linkeffect {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    transition: 0.4s all ease;
+    content: "";
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    background: var(--color-purple-600);
+
+    bottom: -0.75em;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 0.35rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &::after {
+      background: var(--color-purple-400);
+    }
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
