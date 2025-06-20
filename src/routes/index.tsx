@@ -54,6 +54,7 @@ export default function Home() {
         class="cursor-help"
       >
         <img
+          loading="lazy"
           src={img().url}
           alt={t(`img.${img().key}` as "img.woona")}
           class="rounded-full min-w-[128px] max-w-[346px] w-full"
