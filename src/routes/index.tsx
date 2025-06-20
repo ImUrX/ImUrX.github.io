@@ -43,7 +43,11 @@ export default function Home() {
     >
       <Title>{t("home")}</Title>
       <Meta name="description" content={t("description")} />
-      <For each={IMAGES}>{({ url }) => <Link rel="preload" href={url} />}</For>
+      <For each={IMAGES}>
+        {({ url }) => (
+          <Link rel="preload" href={url} as="image" type="image/png" />
+        )}
+      </For>
       <button
         onClick={() => {
           const img = imgs.shift();
