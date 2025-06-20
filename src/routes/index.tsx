@@ -1,7 +1,7 @@
 import { Meta, Title } from "@solidjs/meta";
 import { A } from "@solidjs/router";
 import { OcMarkgithub2 } from "solid-icons/oc";
-import { createEffect, createSignal, Show } from "solid-js";
+import { createEffect, createMemo, createSignal, Show } from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 
@@ -20,10 +20,12 @@ const IMAGES = [
   },
 ];
 const imgs = IMAGES.slice();
+const englishes = ["🫖🔪", "🦅"]
 
 export default function Home() {
   const [img, setImg] = createSignal(IMAGES[0]);
   const [gay, setGay] = createSignal(false);
+  const eng = createMemo(() => englishes[Math.floor(Math.random() * englishes.length)]);
   const t = getL10n();
 
 
@@ -90,7 +92,7 @@ export default function Home() {
             ☀️🌲
           </A>
           <A href="/" title="English">
-            🦅
+            {eng()}
           </A>
         </div>
       </div>
