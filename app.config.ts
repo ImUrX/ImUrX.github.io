@@ -12,5 +12,8 @@ export default defineConfig({
       routes: ["/404.html", "/ja/404.html", "/es/404.html", "/"],
       crawlLinks: true,
     },
+    cloudflare: {
+      wrangler: { name: "homepage" },
+    },
   },
 });
