@@ -22,13 +22,11 @@ const IMAGES = [
 ];
 const imgs = IMAGES.slice();
 const englishes = ["🫖🔪", "🦅"];
+const eng = englishes[Math.floor(Math.random() * englishes.length)];
 
 export default function Home() {
   const [img, setImg] = createSignal(IMAGES[0]);
   const [gay, setGay] = createSignal(false);
-  const eng = createMemo(
-    () => englishes[Math.floor(Math.random() * englishes.length)],
-  );
   const t = getL10n();
 
   createEffect(() => {
@@ -99,7 +97,7 @@ export default function Home() {
           <ALang lang="ja" title="日本語" bw="☀︎🌲">
             ☀️🌲
           </ALang>
-          <ALang title="English">{eng()}</ALang>
+          <ALang title="English">{eng}</ALang>
         </div>
       </div>
     </main>
