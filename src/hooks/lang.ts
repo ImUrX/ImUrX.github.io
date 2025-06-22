@@ -1,7 +1,7 @@
 import * as i18n from "@solid-primitives/i18n";
 import { useParams } from "@solidjs/router";
-import { createContext, createMemo, useContext } from "solid-js";
-import { dictionaries, DictKeys, LangKeys } from "~/i18n";
+import { createMemo } from "solid-js";
+import { dictionaries, LangKeys } from "~/i18n";
 
 export function useLang() {
   return (useParams().lang || "en") as LangKeys;

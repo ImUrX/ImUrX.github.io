@@ -1,7 +1,6 @@
 import { Link, Meta, Title } from "@solidjs/meta";
-import { A } from "@solidjs/router";
 import { OcMarkgithub2 } from "solid-icons/oc";
-import { createEffect, createMemo, createSignal, For, Show } from "solid-js";
+import { createEffect, createSignal, For, Show } from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 import ALang from "~/components/ALang";
