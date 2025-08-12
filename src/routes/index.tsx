@@ -4,8 +4,14 @@ import { createEffect, createSignal, For, Show } from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 import ALang from "~/components/ALang";
+import ALink from "~/components/ALink";
+import { BiSolidDonateHeart } from "solid-icons/bi";
 
 const IMAGES = [
+  {
+    key: "eevee",
+    url: "/images/eevee.png",
+  },
   {
     key: "woona",
     url: "/images/profile.png",
@@ -13,10 +19,6 @@ const IMAGES = [
   {
     key: "daron",
     url: "/images/damnpic.png",
-  },
-  {
-    key: "eevee",
-    url: "/images/eevee.png",
   },
 ];
 const imgs = IMAGES.slice();
@@ -79,14 +81,22 @@ export default function Home() {
           </Show>
         </h1>
         <h2 class="text-3xl md:text-4xl mt-5">{t("hello")}</h2>
-        <div class="flex justify-center items-center content-around mt-2 gap-6">
-          <a
-            href="https://github.com/ImUrX"
-            target="_blank"
-            class="linkeffect transition-all duration-250 text-foreground-10 hover:text-purple-400 hover:not-dark:text-purple-600"
-          >
-            <OcMarkgithub2 class="w-6 h-6 md:w-8 md:h-8" title={t("github")} />
-          </a>
+        <div
+          class={clsx(
+            "grid grid-cols-2 justify-center items-center content-around mt-2",
+            "gap-6 text-sm md:text-base",
+          )}
+        >
+          <ALink href="https://github.com/ImUrX" key="github">
+            <OcMarkgithub2 class="w-6 h-6 md:w-8 md:h-8" color="" fill="" />
+          </ALink>
+          <ALink href="https://github.com/sponsors/ImUrX/" key="sponsor">
+            <BiSolidDonateHeart
+              class="w-6 h-6 md:w-8 md:h-8"
+              color=""
+              fill=""
+            />
+          </ALink>
         </div>
         <p class="mt-5">{t("languages")}</p>
         <div class="flex justify-center items-center content-around gap-6 text-xl">

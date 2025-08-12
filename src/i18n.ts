@@ -12,11 +12,18 @@ const en = {
     daron: "Blond girl with brown skin clapping hands with other girl",
     eevee: "Eevee with purple band in her left ear with her tongue out",
   },
-  github: "My Github profile",
+  github: "Github",
+  sponsor: "A kofi?",
 };
 
 export type Dict = typeof en;
-export type DictKeys = Translator<Flatten<Dict>>
+
+// https://stackoverflow.com/a/56874389
+type KeysMatching<T extends object, V> = {
+  [K in keyof T]-?: T[K] extends V ? K : never
+}[keyof T];
+
+export type DictKeys = KeysMatching<Flatten<Dict>, number | string>
 
 const es: Dict = {
   name: "Uri",
@@ -31,7 +38,8 @@ const es: Dict = {
     eevee:
       "Eevee con una pulsera violeta en su oido izquierdo sacando su lengua para afuera",
   },
-  github: "Mi perfil de Github",
+  github: "Github",
+  sponsor: "Matecito?",
 };
 
 const ja: Dict = {
@@ -46,7 +54,8 @@ const ja: Dict = {
     daron: "金髪の少女が茶色の肌をした別の少女と手を叩き合っている",
     eevee: "左の耳に紫のバンドを付けたイーブイで、舌を出している",
   },
-  github: "内のGitHubプロフ",
+  github: "Github",
+  sponsor: "Kofi",
 };
 
 export const dictionaries = {
