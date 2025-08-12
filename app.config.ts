@@ -9,7 +9,14 @@ export default defineConfig({
   server: {
     // static: true,
     prerender: {
-      routes: ["/404.html", "/ja/404.html", "/es/404.html", "/"],
+      routes: [
+        "/404.html",
+        "/ja/404.html",
+        "/es/404.html",
+        "/enchcracker/",
+        "/richtext-js/",
+        "/",
+      ],
       crawlLinks: true,
     },
     cloudflare: {
