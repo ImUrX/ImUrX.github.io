@@ -1,7 +1,7 @@
 {
   "name": "imurx-website",
   "type": "module",
-  "packageManager": "pnpm@10.12.1",
+  "packageManager": "pnpm@10.14.0",
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
@@ -9,18 +9,18 @@
   },
   "dependencies": {
     "@solid-primitives/i18n": "^2.2.1",
-    "@solid-primitives/storage": "^4.3.2",
+    "@solid-primitives/storage": "^4.3.3",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.3",
-    "@solidjs/start": "^1.1.4",
+    "@solidjs/start": "^1.1.7",
     "clsx": "^2.1.1",
     "solid-icons": "^1.1.0",
-    "solid-js": "^1.9.7",
-    "vinxi": "^0.5.7"
+    "solid-js": "^1.9.8",
+    "vinxi": "^0.5.8"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.10",
-    "tailwindcss": "^4.1.10",
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11",
     "tailwindcss-animated": "^2.0.0"
   },
   "engines": {
