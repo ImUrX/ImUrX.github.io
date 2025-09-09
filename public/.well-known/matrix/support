@@ -1,0 +1,9 @@
+{
+    "contacts": [
+        {
+            "email_address": "admin@imurx.org",
+            "matrix_id": "@imurx:imurx.org",
+            "role": "m.role.admin"
+        }
+    ]
+}
