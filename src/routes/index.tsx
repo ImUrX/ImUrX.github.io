@@ -14,7 +14,6 @@ import { Button } from "@kobalte/core/button";
 import { Separator } from "@kobalte/core/separator";
 import About from "~/components/About";
 
-
 const IMAGES = [
   {
     key: "eevee",
@@ -41,11 +40,9 @@ export default function Home() {
   return (
     <>
       <main
-        class={clsx(
-          `flex snap-center flex-col p-4 text-center md:flex-row
-          [@media(height<=444px)]:relative`,
-          "h-dvh min-h-124 content-center items-center justify-center gap-10",
-        )}
+        class="flex min-wh:h-dvh min-wh:min-h-124 min-wh:snap-center flex-col content-center
+          items-center justify-center gap-10 p-4 text-center md:flex-row
+          md:[@media(height<=444px)]:relative"
         lang={useLang()}
       >
         <Title>{t("home")}</Title>
@@ -142,7 +139,7 @@ export default function Home() {
         <div
           class="flex w-full flex-col items-center text-purple-400
             not-dark:text-purple-600 md:absolute md:bottom-1
-            [@media(height<=444px)]:bottom-14"
+            md:[@media(height<=444px)]:bottom-14"
         >
           <Button
             class="flex cursor-pointer flex-col items-center"

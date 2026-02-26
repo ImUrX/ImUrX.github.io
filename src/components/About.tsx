@@ -51,10 +51,8 @@ export default function About(props: JSX.HTMLAttributes<HTMLElement>) {
     <main
       ref={props.ref}
       id="about"
-      class={clsx(
-        "flex snap-center flex-col p-4 text-center",
-        "h-dvh min-h-140 items-center justify-center gap-5",
-      )}
+      class="flex min-wh:h-dvh min-wh:min-h-140 min-wh:snap-center flex-col items-center
+        justify-center gap-5 p-4 text-center"
       lang={useLang()}
     >
       <span class="max-w-2xl">{t("about.me")}</span>
