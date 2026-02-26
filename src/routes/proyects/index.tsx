@@ -114,7 +114,7 @@ export default function Projects() {
           class="mt-4 flex cursor-pointer items-center gap-2 text-lg
             text-blue-200 underline transition-colors not-dark:text-blue-900
             hover:text-purple-400 hover:not-dark:text-purple-600"
-            href="./"
+            href="../"
         >
           <FaSolidArrowLeftLong />
           <span>{t("proyects.back")}</span>

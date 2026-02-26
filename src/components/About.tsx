@@ -6,7 +6,7 @@ import { Separator } from "@kobalte/core/separator";
 import { Link } from "@kobalte/core/link";
 import { createAsync, query, revalidate } from "@solidjs/router";
 import ConditionalLink from "./ConditionalLink";
-import { projectCards } from "~/routes/proyects";
+import { projectCards } from "~/routes/proyects/index";
 import ProjectCard from "./ProjectCard";
 
 const Transition = lazy(async () => ({
@@ -143,7 +143,7 @@ export default function About(props: JSX.HTMLAttributes<HTMLElement>) {
           class="flex cursor-pointer items-center gap-2 text-lg text-blue-200
             underline transition-colors not-dark:text-blue-900
             hover:text-purple-400 hover:not-dark:text-purple-600"
-          href="./proyects"
+          href="./proyects/"
         >
           <span>{t("about.more")}</span>
           <FaSolidArrowRightLong />
