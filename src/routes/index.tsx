@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <>
       <main
-        class="flex min-h-dvh min-wh:snap-center flex-col content-center
+        class="flex min-h-lvh min-wh:snap-center flex-col content-center
           items-center justify-center gap-10 p-4 text-center md:flex-row
           md:[@media(height<=444px)]:relative"
         lang={useLang()}

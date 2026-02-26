@@ -1,5 +1,13 @@
 import { FaSolidArrowRightLong, FaSolidCompactDisc } from "solid-icons/fa";
-import { createSignal, Index, JSX, lazy, onMount, Show } from "solid-js";
+import {
+  createSignal,
+  ErrorBoundary,
+  Index,
+  JSX,
+  lazy,
+  onMount,
+  Show,
+} from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 import { Separator } from "@kobalte/core/separator";
@@ -54,85 +62,87 @@ export default function About(props: JSX.HTMLAttributes<HTMLElement>) {
     <main
       ref={props.ref}
       id="about"
-      class="flex min-h-dvh flex-col items-center justify-center gap-5 p-4
+      class="flex min-h-lvh flex-col items-center justify-center gap-5 p-4
         text-center min-wh:snap-center"
       lang={useLang()}
     >
       <span class="max-w-2xl">{t("about.me")}</span>
       <Show when={show()}>
-        <Transition name="slide">
-          <Show when={recentTracks()}>
-            <div
-              class={clsx(
-                `relative flex max-w-xl min-w-sm origin-top gap-5
-                overflow-hidden rounded-2xl bg-gray-950 p-5 pt-8
-                not-dark:bg-gray-50`,
-              )}
-            >
-              <span class="absolute top-2 z-1">
-                {t("about.listen1")}
-                <Link
-                  href="https://www.last.fm/user/ImUrX"
-                  target="_blank"
-                  class={clsx(
-                    `text-blue-200 underline not-dark:text-blue-900
-                    hover:text-purple-400`,
-                    "hover:not-dark:text-purple-600",
-                  )}
-                  referrerPolicy="no-referrer"
-                >
-                  last.fm
-                </Link>
-                {t("about.listen2")}
-              </span>
-              <FaSolidCompactDisc
-                class="absolute -top-7 -right-7 h-16 w-16 animate-spin
-                  text-purple-400 not-dark:text-purple-600"
-              />
-              <img
-                referrerPolicy="no-referrer"
-                src={recentTracks().image.at(-1)["#text"]}
-                class="max-h-[96px] max-w-[96px] rounded-2xl p-2"
-              />
-              <div class="flex flex-col items-start justify-center gap-3">
-                <div
-                  class="flex items-center justify-center gap-3 hyphens-auto
-                    text-gray-700 dark:text-gray-200"
-                >
+        <ErrorBoundary fallback={(_, reset) => <></>}>
+          <Transition name="slide">
+            <Show when={recentTracks()}>
+              <div
+                class={clsx(
+                  `relative flex max-w-xl min-w-sm origin-top gap-5
+                  overflow-hidden rounded-2xl bg-gray-950 p-5 pt-8
+                  not-dark:bg-gray-50`,
+                )}
+              >
+                <span class="absolute top-2 z-1">
+                  {t("about.listen1")}
                   <Link
-                    href={recentTracks().url}
+                    href="https://www.last.fm/user/ImUrX"
                     target="_blank"
-                    class="text-left hover:underline"
+                    class={clsx(
+                      `text-blue-200 underline not-dark:text-blue-900
+                      hover:text-purple-400`,
+                      "hover:not-dark:text-purple-600",
+                    )}
                     referrerPolicy="no-referrer"
                   >
-                    {recentTracks().name}
+                    last.fm
                   </Link>
-                  <Show when={recentTracks()?.album?.["#text"]}>
-                    <Separator
-                      orientation="vertical"
-                      class="h-[75%] w-px shrink-0 border-none bg-purple-400
-                        not-dark:bg-purple-600"
-                    />
-                    <ConditionalLink
-                      class="text-center"
-                      base="https://musicbrainz.org/release/"
-                      param={recentTracks().album.mbid}
+                  {t("about.listen2")}
+                </span>
+                <FaSolidCompactDisc
+                  class="absolute -top-7 -right-7 h-16 w-16 animate-spin
+                    text-purple-400 not-dark:text-purple-600"
+                />
+                <img
+                  referrerPolicy="no-referrer"
+                  src={recentTracks().image.at(-1)["#text"]}
+                  class="max-h-[96px] max-w-[96px] rounded-2xl p-2"
+                />
+                <div class="flex flex-col items-start justify-center gap-3">
+                  <div
+                    class="flex items-center justify-center gap-3 hyphens-auto
+                      text-gray-700 dark:text-gray-200"
+                  >
+                    <Link
+                      href={recentTracks().url}
+                      target="_blank"
+                      class="text-left hover:underline"
+                      referrerPolicy="no-referrer"
                     >
-                      {recentTracks().album["#text"]}
-                    </ConditionalLink>
-                  </Show>
+                      {recentTracks().name}
+                    </Link>
+                    <Show when={recentTracks()?.album?.["#text"]}>
+                      <Separator
+                        orientation="vertical"
+                        class="h-[75%] w-px shrink-0 border-none bg-purple-400
+                          not-dark:bg-purple-600"
+                      />
+                      <ConditionalLink
+                        class="text-center"
+                        base="https://musicbrainz.org/release/"
+                        param={recentTracks().album.mbid}
+                      >
+                        {recentTracks().album["#text"]}
+                      </ConditionalLink>
+                    </Show>
+                  </div>
+                  <ConditionalLink
+                    class="text-gray-500 dark:text-gray-400"
+                    base="https://musicbrainz.org/artist/"
+                    param={recentTracks().artist.mbid}
+                  >
+                    {recentTracks().artist["#text"]}
+                  </ConditionalLink>
                 </div>
-                <ConditionalLink
-                  class="text-gray-500 dark:text-gray-400"
-                  base="https://musicbrainz.org/artist/"
-                  param={recentTracks().artist.mbid}
-                >
-                  {recentTracks().artist["#text"]}
-                </ConditionalLink>
               </div>
-            </div>
-          </Show>
-        </Transition>
+            </Show>
+          </Transition>
+        </ErrorBoundary>
       </Show>
       <div class="flex flex-col gap-2 text-left">
         <h2 class="text-xl">{t("about.some")}</h2>
