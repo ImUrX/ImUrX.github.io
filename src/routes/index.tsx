@@ -2,7 +2,7 @@ import { Meta, Title } from "@solidjs/meta";
 import { FaSolidAngleDown } from "solid-icons/fa";
 import { OcMarkgithub2 } from "solid-icons/oc";
 import { BiSolidDonateHeart } from "solid-icons/bi";
-import { createSignal, For, lazy, onMount, Show } from "solid-js";
+import { createSignal, For, Show } from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 import ALang from "~/components/ALang";
@@ -12,9 +12,8 @@ import woona from "./images/profile.png?gallery";
 import daron from "./images/damnpic.png?gallery";
 import { Button } from "@kobalte/core/button";
 import { Separator } from "@kobalte/core/separator";
-import { Switch } from "@kobalte/core/switch";
+import About from "~/components/About";
 
-const Nested = lazy(() => import("../components/About"));
 
 const IMAGES = [
   {
@@ -162,7 +161,7 @@ export default function Home() {
           />
         </div>
       </main>
-      <Nested ref={aboutDiv} />
+      <About ref={aboutDiv} />
     </>
   );
 }
