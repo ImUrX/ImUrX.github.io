@@ -33,7 +33,9 @@ const recentTracksQuery = query(async () => {
   const json = await response?.json().catch(() => null);
   if (
     !response?.ok ||
-    json?.recenttracks?.track?.[0]?.["@attr"]?.nowplaying !== "true"
+    json?.recenttracks?.track?.[0]?.["@attr"]?.nowplaying !== "true" ||
+    !Array.isArray(json.recenttracks.image) ||
+    json.recenttracks.image.length === 0
   ) {
     return 0;
   }
