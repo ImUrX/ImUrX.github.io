@@ -18,6 +18,9 @@ const recentTracksQuery = query(async () => {
 
   const response = await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=imurx&api_key=${process.env.SERVER_LASTFM}&format=json&limit=1`,
+    {
+      cf: { cacheTtlByStatus: { "200-299": 30, 404: 1, "500-599": 0 } },
+    } as unknown as RequestInit,
   ).catch(() => null);
   const json = await response?.json().catch(() => null);
   if (
@@ -51,8 +54,8 @@ export default function About(props: JSX.HTMLAttributes<HTMLElement>) {
     <main
       ref={props.ref}
       id="about"
-      class="flex min-h-dvh min-wh:snap-center flex-col items-center
-        justify-center gap-5 p-4 text-center"
+      class="flex min-h-dvh flex-col items-center justify-center gap-5 p-4
+        text-center min-wh:snap-center"
       lang={useLang()}
     >
       <span class="max-w-2xl">{t("about.me")}</span>
