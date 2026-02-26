@@ -43,7 +43,7 @@ const recentTracksQuery = query(async () => {
 }, "recentTracks");
 
 export default function About(props: JSX.HTMLAttributes<HTMLElement>) {
-  const recentTracks = createAsync(() => recentTracksQuery());
+  const recentTracks = createAsync(() => recentTracksQuery().catch(() => 0));
   const [show, setShow] = createSignal(false);
   onMount(() => {
     const interval = setInterval(() => {
