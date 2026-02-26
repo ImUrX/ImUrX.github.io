@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <>
       <main
-        class="flex min-wh:h-dvh min-wh:min-h-124 min-wh:snap-center flex-col content-center
+        class="flex min-h-dvh min-wh:snap-center flex-col content-center
           items-center justify-center gap-10 p-4 text-center md:flex-row
           md:[@media(height<=444px)]:relative"
         lang={useLang()}
@@ -138,8 +138,7 @@ export default function Home() {
         </div>
         <div
           class="flex w-full flex-col items-center text-purple-400
-            not-dark:text-purple-600 md:absolute md:bottom-1
-            md:[@media(height<=444px)]:bottom-14"
+            not-dark:text-purple-600 md:absolute md:bottom-1"
         >
           <Button
             class="flex cursor-pointer flex-col items-center"

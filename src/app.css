@@ -102,8 +102,8 @@ body {
 }
 
 @custom-variant min-wh {
-  @media (height >= 370px) and (width >= 790px) and (orientation: landscape),
-    (orientation: portrait) and (width >= 370px) and (height >= 730px) {
+  @media (height >= 500px) and (width >= 790px) and (orientation: landscape),
+    (orientation: portrait) and (width >= 500px) and (height >= 730px) {
     @slot;
   }
 }

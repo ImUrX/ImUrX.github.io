@@ -51,7 +51,7 @@ export default function About(props: JSX.HTMLAttributes<HTMLElement>) {
     <main
       ref={props.ref}
       id="about"
-      class="flex min-wh:h-dvh min-wh:min-h-140 min-wh:snap-center flex-col items-center
+      class="flex min-h-dvh min-wh:snap-center flex-col items-center
         justify-center gap-5 p-4 text-center"
       lang={useLang()}
     >
