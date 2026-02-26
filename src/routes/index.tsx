@@ -1,24 +1,33 @@
-import { Link, Meta, Title } from "@solidjs/meta";
+import { Meta, Title } from "@solidjs/meta";
+import { FaSolidAngleDown } from "solid-icons/fa";
 import { OcMarkgithub2 } from "solid-icons/oc";
-import { createEffect, createSignal, For, Show } from "solid-js";
+import { BiSolidDonateHeart } from "solid-icons/bi";
+import { createSignal, For, lazy, onMount, Show } from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 import ALang from "~/components/ALang";
 import ALink from "~/components/ALink";
-import { BiSolidDonateHeart } from "solid-icons/bi";
+import eevee from "./images/eevee.png?gallery";
+import woona from "./images/profile.png?gallery";
+import daron from "./images/damnpic.png?gallery";
+import { Button } from "@kobalte/core/button";
+import { Separator } from "@kobalte/core/separator";
+import { Switch } from "@kobalte/core/switch";
+
+const Nested = lazy(() => import("../components/About"));
 
 const IMAGES = [
   {
     key: "eevee",
-    url: "/images/eevee.png",
+    url: eevee.sources,
   },
   {
     key: "woona",
-    url: "/images/profile.png",
+    url: woona.sources,
   },
   {
     key: "daron",
-    url: "/images/damnpic.png",
+    url: daron.sources,
   },
 ];
 const imgs = IMAGES.slice();
@@ -27,88 +36,133 @@ const eng = englishes[Math.floor(Math.random() * englishes.length)];
 
 export default function Home() {
   const [img, setImg] = createSignal(IMAGES[0]);
-  const [gay, setGay] = createSignal(false);
+  let aboutDiv!: HTMLElement;
   const t = getL10n();
 
-  createEffect(() => {
-    const html = document.querySelector("html");
-    html?.setAttribute("lang", useLang());
-  });
-
   return (
-    <main
-      class="text-center p-4 flex flex-col md:flex-row justify-center items-center content-center gap-10 h-dvh"
-      lang={useLang()}
-    >
-      <Title>{t("home")}</Title>
-      <Meta name="description" content={t("description")} />
-      <For each={IMAGES}>
-        {({ url }) => (
-          <Link rel="preload" href={url} as="image" type="image/png" />
+    <>
+      <main
+        class={clsx(
+          `flex snap-center flex-col p-4 text-center md:flex-row
+          [@media(height<=444px)]:relative`,
+          "h-dvh min-h-124 content-center items-center justify-center gap-10",
         )}
-      </For>
-      <button
-        onClick={() => {
-          const img = imgs.shift();
-          const newImg = Math.floor(Math.random() * imgs.length);
-          setImg(imgs[newImg]);
-          imgs.unshift(...imgs.splice(newImg));
-          img && imgs.push(img);
-        }}
-        class="cursor-help"
+        lang={useLang()}
       >
-        <img
-          loading="lazy"
-          src={img().url}
-          alt={t(`img.${img().key}` as "img.woona")}
-          class="rounded-full min-w-[128px] max-w-[346px] w-full"
-        />
-      </button>
-      <div class="flex flex-col items-center justify-center">
-        <h1
-          class={clsx(
-            "text-8xl md:text-9xl relative",
-            gay() &&
-              "bg-random bg-[length:181px_200%] bg-repeat bg-clip-text animate-scroll text-transparent",
-          )}
+        <Title>{t("home")}</Title>
+        <Meta name="description" content={t("description")} />
+        <Button
+          onClick={() => {
+            const img = imgs.shift();
+            const newImg = Math.floor(Math.random() * imgs.length);
+            setImg(imgs[newImg]);
+            imgs.unshift(...imgs.splice(newImg));
+            img && imgs.push(img);
+          }}
+          class="cursor-help rounded-full"
         >
-          {t("name")}
-          <Show when={useLang() !== "ja"}>
-            <button
-              class="w-4 h-4 rounded-full absolute top-5 right-2 cursor-pointer"
-              onClick={() => setGay((x) => !x)}
+          <picture class="flex justify-center">
+            <For each={Object.entries(img().url)}>
+              {([format, images]) => (
+                <source srcset={images} type={`image/${format}`} />
+              )}
+            </For>
+            <img
+              loading="lazy"
+              srcset={img().url.png}
+              alt={t(`img.${img().key}` as "img.woona")}
+              class="w-[75%] max-w-[346px] min-w-[128px] rounded-full md:w-full"
             />
-          </Show>
-        </h1>
-        <h2 class="text-3xl md:text-4xl mt-5">{t("hello")}</h2>
+          </picture>
+        </Button>
+        <div class="flex flex-col items-center justify-center">
+          <h1
+            class="relative text-8xl has-checked:animate-scroll
+              has-checked:bg-random has-checked:bg-size-[181px_200%]
+              has-checked:bg-clip-text has-checked:bg-repeat
+              has-checked:text-transparent md:text-9xl"
+          >
+            {t("name")}
+            <Show when={useLang() !== "ja"}>
+              <input
+                type="checkbox"
+                class="absolute top-3 right-0 h-8 w-8 cursor-pointer
+                  appearance-none rounded-full md:top-5 md:right-[8.5px] md:h-4
+                  md:w-4"
+              ></input>
+            </Show>
+          </h1>
+          <h2 class="mt-5 text-3xl md:text-4xl">{t("hello")}</h2>
+          <div
+            class={clsx(
+              "mt-2 grid grid-cols-3 content-around items-center justify-center",
+              "gap-6 text-sm md:text-base",
+            )}
+          >
+            <ALink href="https://github.com/ImUrX" key="github">
+              <OcMarkgithub2 class="h-6 w-6 md:h-8 md:w-8" color="" fill="" />
+            </ALink>
+            <ALink href="https://github.com/sponsors/ImUrX/" key="sponsor">
+              <BiSolidDonateHeart
+                class="h-6 w-6 md:h-8 md:w-8"
+                color=""
+                fill=""
+              />
+            </ALink>
+            <ALink
+              href="https://keyoxide.org/EC564A634AFA0877CA4151BF13E59DEACC71A51D"
+              key="keyoxide"
+            >
+              <svg
+                class="h-6 w-6 md:h-8 md:w-8"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="m14.662 2.7734c-0.86914 8.5e-6 -1.5742 0.70509-1.5742 1.5742 0 0.52528 0.26095 1.006 0.67773 1.2949 0.12007 0.083138 0.18912 0.092562 0.20508 0.22266 0.01604 0.13001-0.16211 0.25-0.16211 0.25l-3.3242 2.5859v-0.5293c0.14724-1.4561-0.83223-2.9405-2.2754-3.2793-1.719-0.502-3.7931 1.0298-3.7931 2.6452 0 1.9182 0.00778 8.9247 0.00211 13.429-0.00211 1.6772 1.3577 3.0332 3.0332 3.0332s3.0352-1.3576 3.0352-3.0332v-0.39648c1.365 0.90898 2.7303 1.8174 4.0938 2.7285 1.1299 0.93021 2.9078 0.93859 3.9902-0.07422 1.3712-1.1518 1.323-3.4999-0.0918-4.5957-1.935-1.3219-3.8897-2.6181-5.8418-3.916l5.7734-4.4883c1.1632-0.90466 1.4954-2.5005 0.83398-3.7832-0.04938-0.095755-0.06511-0.12998-0.16797-0.16992-0.10277-0.039938-0.18425 0.00439-0.28711 0.042969-0.14138 0.053062-0.29257 0.080078-0.44531 0.080078-0.69894 0-1.2656-0.56662-1.2656-1.2656 9.4e-5 -0.094853 0.01636-0.14996-0.01172-0.20898-0.02807-0.059023-0.10233-0.097092-0.17578-0.10547-0.12191-0.013926-0.24437-0.020476-0.36719-0.019531-0.12049 8.587e-4 -0.21169-0.00952-0.26367-0.097656-0.05189-0.088142-0.02344-0.18975-0.02344-0.34961 0-0.86915-0.70504-1.5742-1.5742-1.5742z" />
+                <path d="m12.806 3.085a1.0735 1.0735 0 0 1-1.0735 1.0735 1.0735 1.0735 0 0 1-1.0735-1.0735 1.0735 1.0735 0 0 1 1.0735-1.0735 1.0735 1.0735 0 0 1 1.0735 1.0735z" />
+                <path d="m13.458 1.0033a0.70038 0.70038 0 0 1-0.70038 0.70038 0.70038 0.70038 0 0 1-0.70038-0.70038 0.70038 0.70038 0 0 1 0.70038-0.70038 0.70038 0.70038 0 0 1 0.70038 0.70038z" />
+                <path d="m11.339 0.48902a0.48902 0.48902 0 0 1-0.48902 0.48902 0.48902 0.48902 0 0 1-0.48902-0.48902 0.48902 0.48902 0 0 1 0.48902-0.48902 0.48902 0.48902 0 0 1 0.48902 0.48902z" />
+                <path d="m19.203 5.1296a0.85797 0.85797 0 0 1-0.85797 0.85797 0.85797 0.85797 0 0 1-0.85797-0.85797 0.85797 0.85797 0 0 1 0.85797-0.85797 0.85797 0.85797 0 0 1 0.85797 0.85797z" />
+              </svg>
+            </ALink>
+          </div>
+          <p class="mt-5">{t("languages")}</p>
+          <div
+            class="flex content-around items-center justify-center gap-6
+              text-xl"
+          >
+            <ALang lang="es" title="Español">
+              🧉
+            </ALang>
+            <ALang lang="ja" title="日本語" bw="☀︎🌲">
+              ☀️🌲
+            </ALang>
+            <ALang title="English">{englishes[1]}</ALang>
+          </div>
+        </div>
         <div
-          class={clsx(
-            "grid grid-cols-2 justify-center items-center content-around mt-2",
-            "gap-6 text-sm md:text-base",
-          )}
+          class="flex w-full flex-col items-center text-purple-400
+            not-dark:text-purple-600 md:absolute md:bottom-1
+            [@media(height<=444px)]:bottom-14"
         >
-          <ALink href="https://github.com/ImUrX" key="github">
-            <OcMarkgithub2 class="w-6 h-6 md:w-8 md:h-8" color="" fill="" />
-          </ALink>
-          <ALink href="https://github.com/sponsors/ImUrX/" key="sponsor">
-            <BiSolidDonateHeart
-              class="w-6 h-6 md:w-8 md:h-8"
-              color=""
-              fill=""
-            />
-          </ALink>
+          <Button
+            class="flex cursor-pointer flex-col items-center"
+            onClick={() =>
+              aboutDiv.scrollIntoView({
+                behavior: "smooth",
+              })
+            }
+          >
+            <span>{t("about.this")}</span>
+            <FaSolidAngleDown class="my-1 h-6 w-6 motion-safe:animate-bounce" />
+          </Button>
+          <Separator
+            class="h-px w-[50%] border-none bg-purple-400
+              not-dark:bg-purple-600"
+          />
         </div>
-        <p class="mt-5">{t("languages")}</p>
-        <div class="flex justify-center items-center content-around gap-6 text-xl">
-          <ALang lang="es" title="Español">
-            🧉
-          </ALang>
-          <ALang lang="ja" title="日本語" bw="☀︎🌲">
-            ☀️🌲
-          </ALang>
-          <ALang title="English">{eng}</ALang>
-        </div>
-      </div>
-    </main>
+      </main>
+      <Nested ref={aboutDiv} />
+    </>
   );
 }

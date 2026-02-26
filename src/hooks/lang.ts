@@ -12,4 +12,4 @@ export const getL10n = () => {
   const t = i18n.translator(dict);
 
   return t;
-}
+};
