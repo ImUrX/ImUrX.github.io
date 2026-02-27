@@ -1,8 +1,8 @@
 import { Meta, Title } from "@solidjs/meta";
-import { FaSolidAngleDown } from "solid-icons/fa";
+import { FaSolidAngleDown, FaSolidArrowRightLong } from "solid-icons/fa";
 import { OcMarkgithub2 } from "solid-icons/oc";
 import { BiSolidDonateHeart } from "solid-icons/bi";
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, For, Index, lazy, onMount, Show } from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 import ALang from "~/components/ALang";
@@ -12,7 +12,11 @@ import woona from "./images/profile.png?gallery";
 import daron from "./images/damnpic.png?gallery";
 import { Button } from "@kobalte/core/button";
 import { Separator } from "@kobalte/core/separator";
-import About from "~/components/About";
+import { Link } from "@kobalte/core/link";
+import ProjectCard from "~/components/ProjectCard";
+import { projectCards } from "./proyects";
+
+const LastFm = lazy(() => import("../components/LastFm"));
 
 const IMAGES = [
   {
@@ -33,6 +37,11 @@ const englishes = ["🫖🔪", "🦅"];
 const eng = englishes[Math.floor(Math.random() * englishes.length)];
 
 export default function Home() {
+  const [show, setShow] = createSignal(false);
+  onMount(() => {
+    setShow(true);
+    return () => setShow(false);
+  });
   const [img, setImg] = createSignal(IMAGES[0]);
   let aboutDiv!: HTMLElement;
   const t = getL10n();
@@ -40,8 +49,8 @@ export default function Home() {
   return (
     <>
       <main
-        class="flex min-h-lvh min-wh:snap-center flex-col content-center
-          items-center justify-center gap-10 p-4 text-center md:flex-row
+        class="flex min-h-lvh flex-col content-center items-center
+          justify-center gap-10 p-4 text-center md:flex-row min-wh:snap-center
           md:[@media(height<=444px)]:relative"
         lang={useLang()}
       >
@@ -157,7 +166,33 @@ export default function Home() {
           />
         </div>
       </main>
-      <About ref={aboutDiv} />
+      <main
+        ref={aboutDiv}
+        id="about"
+        class="flex min-h-lvh flex-col items-center justify-center gap-5 p-4
+          text-center min-wh:snap-center"
+        lang={useLang()}
+      >
+        <span class="max-w-2xl">{t("about.me")}</span>
+        <Show when={show()}>
+          <LastFm />
+        </Show>
+        <div class="flex flex-col gap-2 text-left">
+          <h2 class="text-xl">{t("about.some")}</h2>
+          <Index each={[projectCards[1], projectCards[5]]}>
+            {(props) => <ProjectCard {...props()} />}
+          </Index>
+          <Link
+            class="flex cursor-pointer items-center gap-2 text-lg text-blue-200
+              underline transition-colors not-dark:text-blue-900
+              hover:text-purple-400 hover:not-dark:text-purple-600"
+            href="./proyects/"
+          >
+            <span>{t("about.more")}</span>
+            <FaSolidArrowRightLong />
+          </Link>
+        </div>
+      </main>
     </>
   );
 }
