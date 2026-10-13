@@ -7,12 +7,13 @@ import { Link } from "@kobalte/core/link";
 import { FaSolidCompactDisc } from "solid-icons/fa";
 import { Separator } from "@kobalte/core/separator";
 import ConditionalLink from "./ConditionalLink";
+import { SERVER_LASTFM } from "env:server";
 
 const recentTracksQuery = query(async () => {
   "use server";
 
   const response = await fetch(
-    `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=imurx&api_key=${process.env.SERVER_LASTFM}&format=json&limit=1`,
+    `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=imurx&api_key=${SERVER_LASTFM}&format=json&limit=1`,
     {
       cf: { cacheTtlByStatus: { "200-299": 30, 404: 1, "500-599": 0 } },
     } as unknown as RequestInit,
@@ -73,7 +74,7 @@ export default function LastFm() {
             <img
               referrerPolicy="no-referrer"
               src={recentTracks().image.at(-1)["#text"]}
-              class="max-h-[96px] max-w-[96px] rounded-2xl p-2"
+              class="max-h-24 max-w-24 rounded-2xl p-2"
             />
             <div class="flex flex-col items-start justify-center gap-3">
               <div

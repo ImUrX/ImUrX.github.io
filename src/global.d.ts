@@ -10,3 +10,7 @@ declare module "*?gallery" {
   };
   export default images;
 }
+
+declare module "env:server" {
+  export const SERVER_LASTFM: string;
+}

@@ -76,7 +76,7 @@ export default function Home() {
               loading="lazy"
               srcset={img().url.png}
               alt={t(`img.${img().key}` as "img.woona")}
-              class="w-[75%] max-w-[346px] min-w-[128px] rounded-full md:w-full"
+              class="w-[75%] max-w-86.5 min-w-32 rounded-full md:w-full"
             />
           </picture>
         </Button>
@@ -115,7 +115,7 @@ export default function Home() {
               />
             </ALink>
             <ALink
-              href="https://keyoxide.org/EC564A634AFA0877CA4151BF13E59DEACC71A51D"
+              href="https://keyoxide.org/7295bb5e13e56d3e1af3d3f4fc190dcc1967f4c5"
               key="keyoxide"
             >
               <svg
