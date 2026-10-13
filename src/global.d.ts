@@ -11,6 +11,10 @@ declare module "*?gallery" {
   export default images;
 }
 
-declare module "env:server" {
-  export const SERVER_LASTFM: string;
+declare module "env:server/runtime" {
+  const env: {
+    SERVER_LASTFM: string;
+  };
+
+  export default env;
 }

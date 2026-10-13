@@ -7,13 +7,13 @@ import { Link } from "@kobalte/core/link";
 import { FaSolidCompactDisc } from "solid-icons/fa";
 import { Separator } from "@kobalte/core/separator";
 import ConditionalLink from "./ConditionalLink";
-import { SERVER_LASTFM } from "env:server";
+import env from "env:server/runtime";
 
 const recentTracksQuery = query(async () => {
   "use server";
 
   const response = await fetch(
-    `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=imurx&api_key=${SERVER_LASTFM}&format=json&limit=1`,
+    `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=imurx&api_key=${env.SERVER_LASTFM}&format=json&limit=1`,
     {
       cf: { cacheTtlByStatus: { "200-299": 30, 404: 1, "500-599": 0 } },
     } as unknown as RequestInit,
