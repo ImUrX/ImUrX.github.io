@@ -13,6 +13,28 @@ export const projectCards: {
   link?: string;
 }[] = [
   {
+    title: "Nixpkgs",
+    key: "projects.nixpkgs",
+    repo: "https://github.com/NixOS/nixpkgs",
+    link: "https://nixos.org/"
+  },
+  {
+    title: "KDE's KWin",
+    key: "projects.kwin",
+    repo: "https://invent.kde.org/plasma/kwin"
+  },
+  {
+    title: "windows-nix",
+    key: "projects.windowsnix",
+    repo: "https://github.com/ImUrX/windows-nix"
+  },
+  {
+    title: "Arcipelago",
+    key: "projects.archipelago",
+    repo: "https://github.com/ArchipelagoMW/Archipelago",
+    link: "https://archipelago.gg/",
+  },
+  {
     title: "Better Locale/localizedbrowser",
     key: "projects.localized",
     repo: "https://github.com/ImUrX/localizedbrowser",

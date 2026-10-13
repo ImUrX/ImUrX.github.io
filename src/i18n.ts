@@ -42,6 +42,13 @@ using Node.JS native libraries`,
 on the web and make it have a leaderboard on the website.`,
     enchcracker: `Port of Earthcomputer's EnchantmentCracker Java app to a web version that uses WASM with
 atomics or split ranges between multiple web workers.`,
+    nixpkgs: "I just maintain packages I use (webcamize) or review ones I want to see on the repo to use for myself.",
+    kwin: `KDE's Wayland compositor, implemented locking for \"on-mouse scrolling\" from libinput
+and axis detection to have the cursor change when being used.`,
+    windowsnix: `A bunch of Windows apps (Fusion 360, Rebelle, Filmora) packaged for Nix that I or friends use.
+The only project I have used LLMs for debugging Wine for me as it's really exhausting to test each iteration.`,
+    archipelago: `A multi-game randomizer. I implemented custom port range support as I was self-hosting my
+own version of it.`
   },
   about: {
     this: "About me",
@@ -113,6 +120,13 @@ permisos de administrador.`,
 implementarlo en la web y hacer que tenga un leaderboard en el website.`,
     enchcracker: `Port de la app de Java EnchantmentCracker de EarthComputer a una versión web que usaba WASM con
 atomicos o rangos separados entre múltiples web workers.`,
+    nixpkgs: "Mantengo paquetes que uso (webcamize) o hago review de los que quiero ver en la repo para uso propio.",
+    kwin: `El compositor de Wayland de KDE, implemente locking para el auto-scroll de libinput
+y el cambio de cursor dependiendo a la dirección que vas.`,
+    windowsnix: `Varias apps de Windows (Fusion 360, Rebelle, Filmora) empaquetadas para Nix que yo o amigos usan.
+El unico proyecto en el que use LLMs para debuggear Wine ya que es muy cansador testear cada cambio.`,
+    archipelago: `Un randomizador para multiples juegos. Implemente soporte para personalizar el rango de puertos usados
+ya que estaba hosteando mi propia versión.`
   },
   about: {
     this: "Sobre mi",
@@ -161,8 +175,8 @@ PD2Toolsはビルド情報を保存するためにサーバーサイドデータ
 以前はdiscord.jsを使っていました。当時はawait/asyncがまだ一般的でコールバックが至る所にあった時代で、Node.jsを使ったJavaScript
 学習がとても楽しかったです。`,
     slimeesp: `主にメンテナンスの改善と磁力計トグル機能の追加を支援しました。`,
-    oscquery: "Kotlinアプリ向けOSCQuery実装",
-    bingus: "そのためのDiscordボットを実装した",
+    oscquery: "Kotlinアプリ向けOSCQuery実装。",
+    bingus: "そのためのDiscordボットを実装した。",
     bongo: `FLTKで作成したBongo catオーバーレイは、ユーザーの入力に反応するもので、友人のTwitchオーバーレイ用に制作されました。
 当初は内の初めてのElectronアプリでしたが、後にRustへ移植され、Node.JSネイティブライブラリを使用するよりも最適化された方法でユー
 ザー入力を受け付けるようになりました。`,
@@ -170,7 +184,15 @@ PD2Toolsはビルド情報を保存するためにサーバーサイドデータ
     mathris: `内の2作目のゲームであり、Godotでの初めての作品です。学校の課題で、ウェブ上で実装し、
 ウェブサイトにリーダーボードを設置する必要がありました。`,
     enchcracker: `Earthcomputer社のEnchantmentCracker Javaアプリを、不可分操作または複数のWebワーカー間で分割範囲を使用する
-cWASMベースのWeb版へ移植`,
+cWASMベースのWeb版へ移植。`,
+    nixpkgs: `内は、自分が使っているパッケージ（webcamize）のメンテナンスをしたり、
+リポジトリに追加されて自分でも使いたいと思うパッケージをレビューしたりしているだけです。`,
+    kwin: `KDEのWaylandコンポジターでは、libinputからの「マウスによるスクロール」のロック機能を実装し、
+軸の検出を行うことで、マウス操作時にカーソルの表示が変化するようにしました。`,
+    windowsnix: `内や友人が使っている、Nix用にパッケージ化されたWindowsアプリ（Fusion 360、Rebelle、Filmora）の数々。
+LLMを使った唯一のプロジェクトは、Wineのデバッグです。各イテレーションをテストするのは本当に骨が折れるので。`,
+    archipelago: `複数のゲームに対応した「randomizer」です。自分用のバージョンを独自にホストしていたため、
+カスタムポート範囲のサポートを実装しました。`
   },
   about: {
     this: "内について",
