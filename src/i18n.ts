@@ -14,7 +14,7 @@ const en = {
   },
   github: "Github",
   sponsor: "A kofi?",
-  keyoxide: "Keyoxide",
+  keyoxide: "Contact me",
   projects: {
     localized: `Minecraft mod that I made to improve user input on searches when using
 a language that is not english, the mod went to get improved by
@@ -91,7 +91,7 @@ const es: Dict = {
   },
   github: "Github",
   sponsor: "Matecito?",
-  keyoxide: "Keyoxide",
+  keyoxide: "Contáctame",
   projects: {
     localized: `Mod de Minecraft que hice para mejorar el input de usuario cuando se hacia algún tipo de búsqueda
 en un lenguaje que no sea inglés, el mod siguió siendo mejorado chequeando más lenguajes como un
@@ -159,7 +159,7 @@ const ja: Dict = {
   },
   github: "Github",
   sponsor: "Kofi",
-  keyoxide: "Keyoxide",
+  keyoxide: "お問い合わせ",
   projects: {
     localized: `英語以外の言語で検索時のユーザー入力を改善するために内が作成したMinecraft用Modです。このModは、
 日本語用の漢字辞書やドイツ語などの他の文字の別名など、より多くの言語に対応するよう改良が進められています。`,
