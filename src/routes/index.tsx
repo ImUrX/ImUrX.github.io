@@ -101,7 +101,7 @@ export default function Home() {
           <div
             class={clsx(
               "mt-2 grid grid-cols-3 content-around items-center justify-center",
-              "gap-6 text-sm md:text-base",
+              "gap-1 text-sm md:text-base",
             )}
           >
             <ALink href="https://github.com/ImUrX" key="github">
