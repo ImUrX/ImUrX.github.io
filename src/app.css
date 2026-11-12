@@ -180,5 +180,5 @@ body {
 }
 
 ::view-transition-new(page) {
-  animation: crt-creep 5s;
+  animation: crt-creep 3s;
 }
