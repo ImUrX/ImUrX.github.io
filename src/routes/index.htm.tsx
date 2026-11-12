@@ -30,7 +30,7 @@ export default function RetroHome() {
   const t = getL10n();
 
   return (
-    <main class="flex flex-col items-center gap-3 text-xs">
+    <main class="flex flex-col items-center gap-3 text-xs w-fit">
       <Title>ImUrX - {t("name")}</Title>
       <h1 class="text-2xl">{t("htm.title")}</h1>
       <div class="flex flex-row gap-3">
