@@ -2,7 +2,7 @@ import { Meta, Title } from "@solidjs/meta";
 import { FaSolidAngleDown, FaSolidArrowRightLong } from "solid-icons/fa";
 import { OcMarkgithub2 } from "solid-icons/oc";
 import { BiSolidDonateHeart } from "solid-icons/bi";
-import { createSignal, Index, lazy, onMount, Show } from "solid-js";
+import { createSignal, Index, lazy, onMount, Show, Suspense } from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 import ALang from "~/components/ALang";
@@ -112,10 +112,7 @@ export default function Home() {
                 fill=""
               />
             </ALink>
-            <ALink
-              href={KEYOXIDE}
-              key="keyoxide"
-            >
+            <ALink href={KEYOXIDE} key="keyoxide">
               <svg
                 class="h-6 w-6 md:h-8 md:w-8"
                 viewBox="0 0 24 24"
@@ -184,7 +181,9 @@ export default function Home() {
       >
         <span class="max-w-2xl">{t("about.me")}</span>
         <Show when={show()}>
-          <LastFm />
+          <Suspense>
+            <LastFm />
+          </Suspense>
         </Show>
         <div class="flex flex-col gap-2 text-left">
           <h2 class="text-xl">{t("about.some")}</h2>
