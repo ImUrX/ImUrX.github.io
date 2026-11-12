@@ -71,6 +71,10 @@
   border-style: inset;
 }
 
+@utility shadow-kobalte {
+  box-shadow: 0 0 0 5px #2a91fe98;
+}
+
 body {
   background: rgb(var(--background-rgb));
   color: rgb(var(--foreground-rgb));

@@ -13,6 +13,7 @@ import { secondToNice } from "~/utils";
 import { Button } from "@kobalte/core/button";
 import { ImPause2, ImPlay3 } from "solid-icons/im";
 import Hls from "hls.js";
+import { Slider } from "@kobalte/core/slider";
 
 const RADIO_LINK = "https://cat.2dgirls.date/hls/kitty_radio/live.m3u8";
 
@@ -50,6 +51,7 @@ export default function Radio() {
       hls.loadSource(RADIO_LINK);
       hls.attachMedia(musicPlayer);
     }
+    musicPlayer.volume = 0.5;
   });
   return (
     <ErrorBoundary fallback={(_, reset) => <></>}>
@@ -62,9 +64,30 @@ export default function Radio() {
             musicPlayer.pause();
           }
         }}
+        class="cursor-pointer"
       >
         {playing() ? <ImPause2 size={32} /> : <ImPlay3 size={32} />}
       </Button>
+      <Slider
+        defaultValue={[50]}
+        onChange={([num]) => (musicPlayer.volume = num / 100)}
+        class="relative flex w-50 touch-none flex-col items-center select-none"
+      >
+        <Slider.Track
+          class="relative h-2 w-full rounded-full bg-[hsl(240_6%_90%)]
+            dark:bg-[hsl(240_5%_26%)]"
+        >
+          <Slider.Fill
+            class="absolute h-full rounded-full bg-[hsl(200_98%_39%)]"
+          />
+          <Slider.Thumb
+            class="-top-1 block h-4 w-4 rounded-full bg-[hsl(200_98%_39%)]
+              hover:shadow-kobalte focus:shadow-kobalte focus:outline-none"
+          >
+            <Slider.Input />
+          </Slider.Thumb>
+        </Slider.Track>
+      </Slider>
       <audio ref={musicPlayer} />
       <Suspense>
         <Show when={playing()}>
