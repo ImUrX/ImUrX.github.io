@@ -20,7 +20,9 @@ export default function App() {
       <Router
         root={(props) => (
           <>
-            <Suspense>{props.children}</Suspense>
+            <Suspense fallback={<div>loading...</div>}>
+              {props.children}
+            </Suspense>
           </>
         )}
       >

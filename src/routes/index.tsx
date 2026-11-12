@@ -2,7 +2,7 @@ import { Meta, Title } from "@solidjs/meta";
 import { FaSolidAngleDown, FaSolidArrowRightLong } from "solid-icons/fa";
 import { OcMarkgithub2 } from "solid-icons/oc";
 import { BiSolidDonateHeart } from "solid-icons/bi";
-import { createSignal, For, Index, lazy, onMount, Show } from "solid-js";
+import { createSignal, Index, lazy, onMount, Show } from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 import ALang from "~/components/ALang";
@@ -15,6 +15,9 @@ import { Separator } from "@kobalte/core/separator";
 import { Link } from "@kobalte/core/link";
 import ProjectCard from "~/components/ProjectCard";
 import { projectCards } from "./proyects";
+import { useNavigate } from "@solidjs/router";
+import Picture from "~/components/Picture";
+import { KEYOXIDE } from "~/utils";
 
 const LastFm = lazy(() => import("../components/LastFm"));
 
@@ -43,6 +46,7 @@ export default function Home() {
     return () => setShow(false);
   });
   const [img, setImg] = createSignal(IMAGES[0]);
+  const navigate = useNavigate();
   let aboutDiv!: HTMLElement;
   const t = getL10n();
 
@@ -66,19 +70,13 @@ export default function Home() {
           }}
           class="cursor-help rounded-full"
         >
-          <picture class="flex justify-center">
-            <For each={Object.entries(img().url)}>
-              {([format, images]) => (
-                <source srcset={images} type={`image/${format}`} />
-              )}
-            </For>
-            <img
-              loading="lazy"
-              srcset={img().url.png}
-              alt={t(`img.${img().key}` as "img.woona")}
-              class="w-[75%] max-w-86.5 min-w-32 rounded-full md:w-full"
-            />
-          </picture>
+          <Picture
+            srcset={img().url}
+            alt={t(`img.${img().key}` as "img.woona")}
+            class="w-[75%] max-w-86.5 min-w-32 rounded-full md:w-full"
+            parentClass="flex justify-center"
+            loading="lazy"
+          />
         </Button>
         <div class="flex flex-col items-center justify-center">
           <h1
@@ -115,7 +113,7 @@ export default function Home() {
               />
             </ALink>
             <ALink
-              href="https://keyoxide.org/7295bb5e13e56d3e1af3d3f4fc190dcc1967f4c5"
+              href={KEYOXIDE}
               key="keyoxide"
             >
               <svg
@@ -163,6 +161,17 @@ export default function Home() {
           <Separator
             class="h-px w-[50%] border-none bg-purple-400
               not-dark:bg-purple-600"
+          />
+        </div>
+        <div class="absolute right-3 bottom-3 flex flex-row items-center gap-3">
+          <div class="h-1 w-3 bg-green-400 shadow shadow-green-400" />
+          <Button
+            class="h-5 w-10 cursor-pointer"
+            onClick={() => {
+              document.startViewTransition(() => {
+                navigate("./index.htm");
+              });
+            }}
           />
         </div>
       </main>

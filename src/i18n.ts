@@ -1,4 +1,6 @@
 import { Flatten } from "@solid-primitives/i18n";
+import { JSX } from "solid-js";
+type JsxString = (val: string) => JSX.Element;
 
 const en = {
   name: "Uri",
@@ -15,6 +17,46 @@ const en = {
   github: "Github",
   sponsor: "A kofi?",
   keyoxide: "Contact me",
+  htm: {
+    title: "My cool website",
+    bomb: "i have a bomb",
+    likes: {
+      title: "I Like:",
+      prog: "Programming",
+      game: "Playing indie games",
+      photo: "Photography",
+      sysadmin: "Setting up useless servers",
+      silly: "silly stuff",
+      draw: "drawing",
+      music: "playing piano",
+    },
+    counter: "Visitor Counter",
+    about: {
+      title: "About me",
+      desc: (silly: JsxString, i: JsxString) => [
+        "Hi, I'm Uri. I like doing ",
+        silly("silly stuff"),
+        " like this special version of the website ",
+        i("(thanks for finding it! Also, there is more easter eggs around the site)"),
+        ".",
+      ],
+      desc2: (draw: JsxString, music: JsxString) => [
+        "I been playing with computers since I was a kid. I always loved doing weird stuff with them. I also like ",
+        draw("drawing"),
+        " and playing ",
+        music("music"),
+        " but I don't practice much in either of them, so don't ask about it >~>.",
+      ],
+      contact: (link: JsxString) => [
+        "If you have a reason to hang out or talk with me, you can contact me with the info on ",
+        link("Keyoxide"),
+      ],
+      back: "Back to normal site",
+    },
+    webring: {
+      paws: "Built with my own two paws",
+    },
+  },
   projects: {
     localized: `Minecraft mod that I made to improve user input on searches when using
 a language that is not english, the mod went to get improved by
@@ -42,13 +84,14 @@ using Node.JS native libraries`,
 on the web and make it have a leaderboard on the website.`,
     enchcracker: `Port of Earthcomputer's EnchantmentCracker Java app to a web version that uses WASM with
 atomics or split ranges between multiple web workers.`,
-    nixpkgs: "I just maintain packages I use (webcamize) or review ones I want to see on the repo to use for myself.",
+    nixpkgs:
+      "I just maintain packages I use (webcamize) or review ones I want to see on the repo to use for myself.",
     kwin: `KDE's Wayland compositor, implemented locking for \"on-mouse scrolling\" from libinput
 and axis detection to have the cursor change when being used.`,
     windowsnix: `A bunch of Windows apps (Fusion 360, Rebelle, Filmora) packaged for Nix that I or friends use.
 The only project I have used LLMs for debugging Wine for me as it's really exhausting to test each iteration.`,
     archipelago: `A multi-game randomizer. I implemented custom port range support as I was self-hosting my
-own version of it.`
+own version of it.`,
   },
   about: {
     this: "About me",
@@ -92,6 +135,46 @@ const es: Dict = {
   github: "Github",
   sponsor: "Matecito?",
   keyoxide: "Contáctame",
+  htm: {
+    title: "Mi página súper cool",
+    bomb: "tengo una bomba",
+    likes: {
+      title: "Me gusta:",
+      prog: "Programar",
+      game: "Jugar juegos indie",
+      photo: "Fotografía",
+      sysadmin: "Configurar servidores que no se usan",
+      silly: "cosas tontas",
+      draw: "dibujar",
+      music: "tocar el piano",
+    },
+    counter: "Contador de visitas",
+    about: {
+      title: "Sobre mí",
+      desc: (silly: JsxString, i: JsxString) => [
+        "Hola soy Uri, me gustan las ",
+        silly("cosas tontas"),
+        " como esta versión especial de la página ",
+        i("(¡Gracias por encontrarla! Ah, y tambien hay mas secretos por encontrar)"),
+        ".",
+      ],
+      desc2: (draw: JsxString, music: JsxString) => [
+        "Juego con las computadoras desde edad muy joven. Siempre me gusto hacer cosas raras con ellas. También me gusta ",
+        draw("dibujar"),
+        " y tocar el ",
+        music("piano"),
+        " pero no tengo mucha practica, por favor no preguntes sobre eso >~>.",
+      ],
+      contact: (link: JsxString) => [
+        "Si tienes alguna razón para pasar el tiempo conmigo o hablarme, me podes contactar con la información en ",
+        link("Keyoxide"),
+      ],
+      back: "Volver a la página normal",
+    },
+    webring: {
+      paws: "Construido con mis dos patas",
+    },
+  },
   projects: {
     localized: `Mod de Minecraft que hice para mejorar el input de usuario cuando se hacia algún tipo de búsqueda
 en un lenguaje que no sea inglés, el mod siguió siendo mejorado chequeando más lenguajes como un
@@ -120,13 +203,14 @@ permisos de administrador.`,
 implementarlo en la web y hacer que tenga un leaderboard en el website.`,
     enchcracker: `Port de la app de Java EnchantmentCracker de EarthComputer a una versión web que usaba WASM con
 atomicos o rangos separados entre múltiples web workers.`,
-    nixpkgs: "Mantengo paquetes que uso (webcamize) o hago review de los que quiero ver en la repo para uso propio.",
+    nixpkgs:
+      "Mantengo paquetes que uso (webcamize) o hago review de los que quiero ver en la repo para uso propio.",
     kwin: `El compositor de Wayland de KDE, implemente locking para el auto-scroll de libinput
 y el cambio de cursor dependiendo a la dirección que vas.`,
     windowsnix: `Varias apps de Windows (Fusion 360, Rebelle, Filmora) empaquetadas para Nix que yo o amigos usan.
 El unico proyecto en el que use LLMs para debuggear Wine ya que es muy cansador testear cada cambio.`,
     archipelago: `Un randomizador para multiples juegos. Implemente soporte para personalizar el rango de puertos usados
-ya que estaba hosteando mi propia versión.`
+ya que estaba hosteando mi propia versión.`,
   },
   about: {
     this: "Sobre mi",
@@ -160,6 +244,49 @@ const ja: Dict = {
   github: "Github",
   sponsor: "Kofi",
   keyoxide: "お問い合わせ",
+  htm: {
+    title: "内のかっこいいほめぱげ",
+    bomb: "爆弾を持っている",
+    likes: {
+      title: "好き:",
+      prog: "プログラミング",
+      game: "インディーゲームをプレイ",
+      photo: "写真撮影",
+      sysadmin: "役に立たないサーバーの設置",
+      silly: "下らないこと",
+      draw: "絵を描く",
+      music: "ピアノを弾く",
+    },
+    counter: "人口",
+    about: {
+      title: "自己紹介",
+      desc: (silly: JsxString, i: JsxString) => [
+        "はいたい！瓜です。このサイトの特別版のような、ちょっとお",
+        silly("下らないこと"),
+        "をするのが好きなんです",
+        i(
+          "（見つけてくれてありがとう！ ちなみに、サイト内のあちこちにイースターエッグが隠されています）",
+        ),
+        "。",
+      ],
+      desc2: (draw: JsxString, music: JsxString) => [
+        "子供の頃からずっとパソコンをいじっています。いつもパソコンで変わったことをするのが大好きでした。",
+        draw("絵を描いたり"),
+        "音楽を",
+        music("演奏"),
+        "したりするのも好きですが、どちらもあまり練習していないので、そのことについては聞かないでくださいね >~>。",
+      ],
+      contact: (link: JsxString) => [
+        "もし内と会ったり話したりしたい理由があれば、",
+        link("Keyoxide"),
+        "に掲載されている情報から連絡してください。",
+      ],
+      back: "普通のサイトに戻る",
+    },
+    webring: {
+      paws: "自分の両肉球で建てた",
+    },
+  },
   projects: {
     localized: `英語以外の言語で検索時のユーザー入力を改善するために内が作成したMinecraft用Modです。このModは、
 日本語用の漢字辞書やドイツ語などの他の文字の別名など、より多くの言語に対応するよう改良が進められています。`,
@@ -192,7 +319,7 @@ cWASMベースのWeb版へ移植。`,
     windowsnix: `内や友人が使っている、Nix用にパッケージ化されたWindowsアプリ（Fusion 360、Rebelle、Filmora）の数々。
 LLMを使った唯一のプロジェクトは、Wineのデバッグです。各イテレーションをテストするのは本当に骨が折れるので。`,
     archipelago: `複数のゲームに対応した「randomizer」で。自分用のバージョンを独自にホストしていたため、
-カスタムポート範囲のサポートを実装しました。`
+カスタムポート範囲のサポートを実装しました。`,
   },
   about: {
     this: "内について",
