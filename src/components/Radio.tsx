@@ -4,6 +4,7 @@ import {
   createEffect,
   createSignal,
   ErrorBoundary,
+  onCleanup,
   onMount,
   Show,
   Suspense,
@@ -53,6 +54,7 @@ export default function Radio() {
     }
     musicPlayer.volume = 0.5;
   });
+
   return (
     <ErrorBoundary fallback={(_, reset) => <></>}>
       <Button
@@ -124,10 +126,10 @@ export function RadioInner() {
 
     if (globalThis.window) revalidate([getRadioInfo.key]);
 
-    return () => {
+    onCleanup(() => {
       clearTimeout(timeout);
       clearTimeout(timeout2);
-    };
+    });
   });
 
   onMount(() => {
@@ -135,7 +137,7 @@ export function RadioInner() {
       setTime((time) => time + 1);
     }, 1000);
 
-    return () => clearInterval(interval);
+    onCleanup(() => clearInterval(interval));
   });
 
   return (

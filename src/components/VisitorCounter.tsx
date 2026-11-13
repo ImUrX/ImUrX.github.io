@@ -5,6 +5,7 @@ import env from "env:server/runtime";
 import { getRequestEvent } from "solid-js/web";
 import { isBot } from "ua-parser-js/bot-detection";
 import { getCounter, increaseCounter } from "~/lib/counter";
+import { isDev } from "solid-js/web";
 
 type SessionData = {
   visited?: "true";
@@ -18,7 +19,7 @@ const getVisitorCounter = query(async () => {
     password: env.SERVER_SESSION_SECRET,
     cookie: {
       httpOnly: true,
-      secure: !import.meta.dev,
+      secure: !isDev,
       sameSite: "strict",
     },
   });

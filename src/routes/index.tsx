@@ -2,7 +2,15 @@ import { Meta, Title } from "@solidjs/meta";
 import { FaSolidAngleDown, FaSolidArrowRightLong } from "solid-icons/fa";
 import { OcMarkgithub2 } from "solid-icons/oc";
 import { BiSolidDonateHeart } from "solid-icons/bi";
-import { createSignal, Index, lazy, onMount, Show, Suspense } from "solid-js";
+import {
+  createSignal,
+  Index,
+  lazy,
+  onCleanup,
+  onMount,
+  Show,
+  Suspense,
+} from "solid-js";
 import { clsx } from "clsx/lite";
 import { getL10n, useLang } from "~/hooks/lang";
 import ALang from "~/components/ALang";
@@ -43,7 +51,7 @@ export default function Home() {
   const [show, setShow] = createSignal(false);
   onMount(() => {
     setShow(true);
-    return () => setShow(false);
+    onCleanup(() => setShow(false));
   });
   const [img, setImg] = createSignal(IMAGES[0]);
   const navigate = useNavigate();

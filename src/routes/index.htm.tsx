@@ -146,7 +146,7 @@ export default function RetroHome() {
           border-dotted border-accent-10 p-2"
       >
         <div class="group relative">
-          <Link href="https://imurx.org/">
+          <Link href="./webring">
             <Picture
               srcset={me.sources}
               class="h-8 image-pixelated"
@@ -155,8 +155,7 @@ export default function RetroHome() {
             <Picture
               srcset={meFur.sources}
               class="absolute top-0 h-8 animate-[hide_1s_forwards]
-                image-pixelated group-hover:visible
-                group-hover:animate-[reveal_1s_forwards]"
+                image-pixelated group-hover:animate-[reveal_1s_forwards]"
               alt="imurx.fur"
             />
           </Link>

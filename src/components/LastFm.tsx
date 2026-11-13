@@ -1,6 +1,6 @@
 import { createAsync, query, revalidate } from "@solidjs/router";
 import clsx from "clsx";
-import { ErrorBoundary, onMount, Show } from "solid-js";
+import { ErrorBoundary, onCleanup, onMount, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
 import { getL10n } from "~/hooks/lang";
 import { Link } from "@kobalte/core/link";
@@ -37,7 +37,7 @@ export default function LastFm() {
 
     if (globalThis.window) revalidate([recentTracksQuery.key]);
 
-    return () => clearInterval(interval);
+    onCleanup(() => clearInterval(interval));
   });
   const t = getL10n();
 

@@ -186,3 +186,7 @@ body {
 ::view-transition-new(page) {
   animation: crt-creep 3s;
 }
+
+.hljs-string {
+  color: lightblue !important;
+}
