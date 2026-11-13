@@ -67,11 +67,11 @@ const htmlCode = `<!DOCTYPE html>
   <div class="group">
     <a href="./webring">
       <img
-        src={${eevee}}
+        src="./eevee.png"
         alt="imurx.org"
       />
       <img
-        src={${eeveefur}}
+        src="./eeveefur.png"
         class="fur"
         alt="imurx.fur"
       />
@@ -85,12 +85,12 @@ const tsxCode = `function Example() {
     <div class="group relative">
       <a href="./webring">
         <img
-          src={${eevee}}
+          src="./eevee.png"
           class="h-8 image-pixelated"
           alt="imurx.org"
         />
         <img
-          src={${eeveefur}}
+          src="./eeveefur.png"
           class="absolute top-0 h-8 animate-[hide_1s_forwards]
             image-pixelated group-hover:animate-[reveal_1s_forwards]"
           alt="imurx.fur"
