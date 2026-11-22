@@ -4,8 +4,10 @@ import meFur from "./images/webring/eeveefur.png?gallery";
 import paws from "./images/webring/paws.png?gallery";
 import ckie from "./images/webring/pupcat.png?gallery";
 import jamie from "./images/webring/jamie.png?gallery";
+import ubo from "./images/webring/ubo.png?gallery";
 import eevee from "./images/eevee.png?gallery";
 import bomb from "./images/bomb.png?gallery";
+import sam from "./images/donate-to-sam-altman.webp?gallery";
 import prideflag from "./images/prideflag.png?gallery";
 import VisitorCounter from "~/components/VisitorCounter";
 import { getL10n } from "~/hooks/lang";
@@ -133,6 +135,13 @@ export default function RetroHome() {
           <Link href="./" class="self-end text-blue-500 underline">
             {t("htm.about.back")}
           </Link>
+          <Link href="https://github.com/sponsors/ImUrX">
+            <Picture
+              srcset={sam.sources}
+              class="absolute right-1 bottom-1 h-36"
+              alt={t("sponsor")}
+            />
+          </Link>
           <Radio />
           <img
             loading="lazy"
@@ -142,19 +151,19 @@ export default function RetroHome() {
         </div>
       </div>
       <div
-        class="flex w-fit max-w-2xl flex-row flex-wrap gap-3 border-4
-          border-dotted border-accent-10 p-2"
+        class="grid grid-cols-5 gap-2 border-4 border-dotted border-accent-10
+          p-2 items-end-safe"
       >
         <div class="group relative">
           <Link href="./webring">
             <Picture
               srcset={me.sources}
-              class="h-8 image-pixelated"
+              class="w-[90.8334px] image-pixelated"
               alt="imurx.org"
             />
             <Picture
               srcset={meFur.sources}
-              class="absolute top-0 h-8 animate-[hide_1s_forwards]
+              class="absolute top-0 w-[90.8334px] animate-[hide_1s_forwards]
                 image-pixelated group-hover:animate-[reveal_1s_forwards]"
               alt="imurx.fur"
             />
@@ -179,6 +188,30 @@ export default function RetroHome() {
             alt="jamie.rs"
           />
         </Link>
+        <Link href="https://github.com/gorhill/uBlock#ublock-origin-ubo">
+          <Picture
+            srcset={ubo.sources}
+            class="h-8 image-pixelated"
+            alt="uBlock Origin"
+          />
+        </Link>
+        <Link href="https://www.firefox.com">
+          <img
+            src="/imgs/mozilla2.gif"
+            class="h-8 image-pixelated"
+            alt="Mozilla"
+          />
+        </Link>
+        <img
+          src="/imgs/valid-bad.gif"
+          class="h-8 image-pixelated"
+          alt="Bad HTML Markup"
+        />
+        <img
+          src="/imgs/tyg.gif"
+          class="h-8 image-pixelated"
+          alt="Trans your gender"
+        />
       </div>
     </main>
   );
